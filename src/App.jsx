@@ -1,11 +1,13 @@
+import axios from "axios";
 import { useState } from "react";
 
+// infoBases
 const urlBase = "https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts";
 const dataDefault = [
   {
-    aithor: "",
-    title: "",
-    body: "",
+    aithor: "grs",
+    title: "gsr",
+    body: "grsg",
   },
 ];
 
@@ -15,12 +17,19 @@ export default function App() {
   const handleNewAuthor = (e) => {
     setNewAutor({ ...newAuthor, [e.target.name]: e.target.value });
   };
-  console.log(newAuthor);
+
+  const hendlesubmit = (e) => {
+    e.preventDefault();
+    axios.put(dataDefault, newAuthor).then((res) => {
+      console.log(res);
+    });
+    console.log(newAuthor);
+  };
   return (
     <>
       <h1 className="p-5 text-center">FORM</h1>
       <div className="container ">
-        <form>
+        <form onSubmit={hendlesubmit}>
           <label className="form-label" htmlFor="author">
             author
           </label>
@@ -30,6 +39,7 @@ export default function App() {
             type="text"
             name="author"
             onChange={handleNewAuthor}
+            required
           />
           <label className="form-label" htmlFor="title ">
             title
@@ -40,6 +50,7 @@ export default function App() {
             type="text"
             name="title"
             onChange={handleNewAuthor}
+            required
           />
           <label className="form-label" htmlFor="body ">
             body
@@ -50,6 +61,7 @@ export default function App() {
             type="text"
             name="body"
             onChange={handleNewAuthor}
+            required
           />
           <div className="form-check mt-3">
             <input

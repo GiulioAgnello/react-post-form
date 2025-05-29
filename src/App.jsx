@@ -12,12 +12,12 @@ const dataDefault = {
 
 export default function App() {
   const [newAuthor, setNewAutor] = useState(dataDefault);
-
+const [checkedSet,setCheckValue] = useState(dataDefault)
   const handleNewAuthor = (e) => {
-    // setCheckValue(e.target.checked);
+    
     setNewAutor({
       ...newAuthor,
-      [e.target.name]: e.target.value && e.target.checked,
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -78,7 +78,7 @@ export default function App() {
               checked={newAuthor.public}
               name="public"
               id="checkDefault"
-              onChange={handleNewAuthor}
+              onChange={handleNewAuthor,}
             />
             <label className="form-check-label" htmlFor="checkDefault">
               Public

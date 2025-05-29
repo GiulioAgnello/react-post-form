@@ -18,7 +18,7 @@ export default function App() {
 
   const hendlesubmit = (e) => {
     e.preventDefault();
-    axios.post(dataDefault, newAuthor).then((res) => {
+    axios.post(urlBase, newAuthor).then((res) => {
       console.log(res);
     });
     console.log(newAuthor);

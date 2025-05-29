@@ -18,10 +18,15 @@ export default function App() {
 
   const hendlesubmit = (e) => {
     e.preventDefault();
-    axios.post(urlBase, newAuthor).then((res) => {
-      console.log(res);
-    });
-    console.log(newAuthor);
+    axios
+      .post(urlBase, newAuthor)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        alert("form non inviato");
+        console.error(err);
+      });
   };
   return (
     <>

@@ -3,13 +3,11 @@ import { useState } from "react";
 
 // infoBases
 const urlBase = "https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts";
-const dataDefault = [
-  {
-    aithor: "grs",
-    title: "gsr",
-    body: "grsg",
-  },
-];
+const dataDefault = {
+  author: "",
+  title: "",
+  body: "",
+};
 
 export default function App() {
   const [newAuthor, setNewAutor] = useState(dataDefault);
@@ -20,7 +18,7 @@ export default function App() {
 
   const hendlesubmit = (e) => {
     e.preventDefault();
-    axios.put(dataDefault, newAuthor).then((res) => {
+    axios.post(dataDefault, newAuthor).then((res) => {
       console.log(res);
     });
     console.log(newAuthor);

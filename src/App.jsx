@@ -1,14 +1,73 @@
 import { useState } from "react";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Main from "./components/Main";
+
+const urlBase = "https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts";
+const dataDefault = [
+  {
+    aithor: "",
+    title: "",
+    body: "",
+  },
+];
 
 export default function App() {
+  const [newAuthor, setNewAutor] = useState(dataDefault);
+
+  const handleNewAuthor = (e) => {
+    setNewAutor({ ...newAuthor, [e.target.name]: e.target.value });
+  };
+  console.log(newAuthor);
   return (
     <>
-      <Header />
-      <Main />
-      <Footer />
+      <h1 className="p-5 text-center">FORM</h1>
+      <div className="container ">
+        <form>
+          <label className="form-label" htmlFor="author">
+            author
+          </label>
+          <input
+            className="form-control"
+            id="author "
+            type="text"
+            name="author"
+            onChange={handleNewAuthor}
+          />
+          <label className="form-label" htmlFor="title ">
+            title
+          </label>
+          <input
+            className="form-control"
+            id="title"
+            type="text"
+            name="title"
+            onChange={handleNewAuthor}
+          />
+          <label className="form-label" htmlFor="body ">
+            body
+          </label>
+          <input
+            className="form-control"
+            id="body "
+            type="text"
+            name="body"
+            onChange={handleNewAuthor}
+          />
+          <div className="form-check mt-3">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              value=""
+              id="checkDefault"
+            />
+            <label className="form-check-label" htmlFor="checkDefault">
+              public
+            </label>
+          </div>
+
+          <div className="d-flex justify-content-center m-3">
+            <button className="btn btn-primary">invia</button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }

@@ -7,13 +7,18 @@ const dataDefault = {
   author: "",
   title: "",
   body: "",
+  public: false,
 };
 
 export default function App() {
   const [newAuthor, setNewAutor] = useState(dataDefault);
 
   const handleNewAuthor = (e) => {
-    setNewAutor({ ...newAuthor, [e.target.name]: e.target.value });
+    // setCheckValue(e.target.checked);
+    setNewAutor({
+      ...newAuthor,
+      [e.target.name]: e.target.value && e.target.checked,
+    });
   };
 
   const hendlesubmit = (e) => {
@@ -34,7 +39,7 @@ export default function App() {
       <div className="container ">
         <form onSubmit={hendlesubmit}>
           <label className="form-label" htmlFor="author">
-            author
+            Author
           </label>
           <input
             className="form-control"
@@ -45,7 +50,7 @@ export default function App() {
             required
           />
           <label className="form-label" htmlFor="title ">
-            title
+            Title
           </label>
           <input
             className="form-control"
@@ -56,7 +61,7 @@ export default function App() {
             required
           />
           <label className="form-label" htmlFor="body ">
-            body
+            Body
           </label>
           <input
             className="form-control"
@@ -70,11 +75,13 @@ export default function App() {
             <input
               className="form-check-input"
               type="checkbox"
-              value=""
+              checked={newAuthor.public}
+              name="public"
               id="checkDefault"
+              onChange={handleNewAuthor}
             />
             <label className="form-check-label" htmlFor="checkDefault">
-              public
+              Public
             </label>
           </div>
 
